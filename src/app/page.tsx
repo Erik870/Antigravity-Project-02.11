@@ -427,9 +427,10 @@ export default function Home() {
               <button
                 onClick={() => triggerJobSearch(profile)}
                 disabled={isSearchingJobs}
-                className="px-3 py-1.5 bg-[#ffffff] border border-gray-300 hover:border-[#163300] rounded-full text-xs font-semibold text-[#163300] transition"
+                className="px-4 py-2 bg-[#163300] hover:bg-[#054d28] text-[#9fe870] border border-[#163300] rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer disabled:opacity-50"
               >
-                {isSearchingJobs ? "Refreshing..." : "↻ Refresh Jobs"}
+                <span>{isSearchingJobs ? "⟳" : "↻"}</span>
+                <span>{isSearchingJobs ? "Refreshing Jobs..." : "Refresh Jobs"}</span>
               </button>
             </div>
 
