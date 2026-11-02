@@ -260,12 +260,6 @@ export default function Home() {
                   <p className="text-sm font-semibold text-[#6a6c6a]">{profile.headline || "Professional"}</p>
                   <p className="text-xs text-[#868685] mt-1">{profile.location || "Location not specified"}</p>
                 </div>
-                <button
-                  onClick={resetToFirstPage}
-                  className="no-print px-3 py-1.5 text-xs text-[#163300] hover:underline font-semibold cursor-pointer"
-                >
-                  ← Upload another CV
-                </button>
               </div>
               {profile.summary && (
                 <p className="mt-4 text-xs sm:text-sm text-[#454745] leading-relaxed bg-[#e8ebe6]/40 p-3 rounded-lg border border-gray-200/50">
