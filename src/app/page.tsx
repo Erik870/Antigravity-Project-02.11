@@ -111,6 +111,18 @@ export default function Home() {
     setProfile(updated);
   };
 
+  const resetToFirstPage = () => {
+    setProfile(null);
+    setFile(null);
+    setError(null);
+    setJobsData(null);
+    setDroppedSkills([]);
+    setWarnings([]);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   const addSkill = (e: React.FormEvent) => {
     e.preventDefault();
     if (!profile || !newSkillText.trim()) return;
@@ -148,14 +160,23 @@ export default function Home() {
             <p className="text-xs text-[#6a6c6a]">Intelligence meets opportunity</p>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           {profile && (
-            <button
-              onClick={() => window.print()}
-              className="px-4 py-2 bg-[#ffffff] border border-[#163300] text-[#163300] rounded-full text-xs font-semibold hover:bg-gray-50 transition"
-            >
-              Print / Save PDF
-            </button>
+            <>
+              <button
+                onClick={resetToFirstPage}
+                className="px-4 py-2 bg-[#163300] hover:bg-[#054d28] text-[#9fe870] rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+              >
+                <span>←</span>
+                <span>Upload New CV</span>
+              </button>
+              <button
+                onClick={() => window.print()}
+                className="px-4 py-2 bg-[#ffffff] border border-[#163300] text-[#163300] rounded-full text-xs font-semibold hover:bg-gray-50 transition cursor-pointer"
+              >
+                Print / Save PDF
+              </button>
+            </>
           )}
         </div>
       </header>
@@ -240,11 +261,8 @@ export default function Home() {
                   <p className="text-xs text-[#868685] mt-1">{profile.location || "Location not specified"}</p>
                 </div>
                 <button
-                  onClick={() => {
-                    setProfile(null);
-                    setFile(null);
-                  }}
-                  className="no-print px-3 py-1.5 text-xs text-[#163300] hover:underline"
+                  onClick={resetToFirstPage}
+                  className="no-print px-3 py-1.5 text-xs text-[#163300] hover:underline font-semibold cursor-pointer"
                 >
                   ← Upload another CV
                 </button>
