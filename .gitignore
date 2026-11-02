@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.*.local
+*.env
 
 # Dependencies & build output
 node_modules/
@@ -9,7 +10,10 @@ node_modules/
 out/
 dist/
 coverage/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # OS / editor
 .DS_Store
 Thumbs.db
+
