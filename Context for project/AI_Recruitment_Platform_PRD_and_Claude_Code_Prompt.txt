@@ -1,0 +1,408 @@
+AI-POWERED GLOBAL
+RECRUITMENT PLATFORM
+Product Concept, System Architecture and Claude Code Development Prompt
+
+Core principle: Describe yourself. Describe your needs. Let AI find the right match.
+
+Global market  |  All professional sectors  |  Candidate and Employer portals
+
+ Document purpose
+This document defines the product concept, three-module architecture, key user journeys, privacy approach, matching logic and a master development prompt for building an interactive hackathon MVP using Claude Code. It is intended to be shared with project colleagues and used as a common implementation brief.
+1. Product vision
+Build an AI-powered, two-sided recruitment platform that helps people find suitable work and helps employers and recruitment organizations identify qualified candidates quickly. The platform converts unstructured candidate information and vacancy descriptions into structured data, then compares them through an explainable matching engine.
+The initial product scope is global and covers all industries and professional sectors. The platform should support multiple languages, currencies, salary periods, employment types and country-specific qualification requirements through a configurable architecture.
+The product is not simply a job board. Its core value is structured information, AI-assisted profile and vacancy creation, and two-sided matching.
+
+2. Three-module system architecture
+ 
+The two portals are separate user experiences connected to one shared data layer and matching engine. Candidate and vacancy information is normalized before matching. Results are returned to the relevant portal subject to privacy and access permissions.
+2.1 Module A: Job Seeker Portal
+Purpose: allow individuals to create a structured professional profile with minimal effort and discover suitable vacancies.
+Registration and account management
+•	Register and log in using email and password, with secure account management.
+•	Create, edit and maintain a professional profile.
+•	Manage profile visibility and consent settings.
+•	Request account deletion and deletion of personal data, subject to applicable legal retention requirements.
+Three profile creation methods
+1. AI Guided Profile Creation
+The user enters a profession, such as “electrician”. The AI asks profession-specific questions about qualification level, safety permits, experience, installation types, education and countries where the person is authorized to work. The questionnaire must adapt to the occupation.
+2. CV Upload
+The user uploads a PDF or DOCX file. The system extracts work experience, education, skills, languages, certificates and licenses. It creates a structured draft, identifies missing or ambiguous information, and asks follow-up questions. The candidate reviews and approves the profile before it is saved.
+3. Natural Language Input
+The user describes their background in ordinary language. Example: “I am a truck driver with seven years of experience, C and CE driving categories, Latvian and English language skills, and availability from December in Riga or within 50 km.” AI converts this into structured fields and asks relevant follow-up questions.
+Candidate profile data
+•	Personal information and professional title.
+•	Industry, occupation and standardized skills.
+•	Professional experience, education and qualifications.
+•	Certificates, licenses and other supporting documents.
+•	Languages and proficiency levels.
+•	Current location, preferred regions and mobility.
+•	Employment type preferences and availability date.
+•	Expected salary, currency and payment period.
+•	CV and supporting documents.
+•	Profile visibility and consent preferences.
+Candidate dashboard
+•	Profile completion status.
+•	Number of potentially matching vacancies.
+•	Recommended vacancies with Match Scores and score explanations.
+•	Employer information, salary range, location and distance where available.
+•	Application and communication status.
+•	Filters for location, industry, salary, employment type and availability.
+2.2 Module B: Employer / Recruiter Portal
+Support recruitment agencies, direct employers and government or public-sector organizations. The organization profile should include organization name, type, industry, location, description and contact information.
+Three vacancy creation methods
+1. AI Guided Vacancy Creation
+The employer enters a role, such as “electrician”. AI asks about mandatory qualifications, safety permits, experience, technical skills, location, salary, start date and number of employees required.
+2. Job Description Upload
+The employer uploads an existing PDF or DOCX job description. AI extracts and structures the requirements.
+3. Natural Language Vacancy Creation
+Example: “We need three experienced electricians in Riga. Candidates must hold the required electrical safety qualification, have at least three years of experience and be available from December. Salary is EUR 1,500 to EUR 2,000 per month.” AI converts the description into structured vacancy fields.
+Vacancy data
+•	Job title, industry and occupation.
+•	Required skills, mandatory qualifications and preferred qualifications.
+•	Minimum experience and other relevant experience criteria.
+•	Location, geographical search radius and work arrangement.
+•	Employment type and working schedule.
+•	Salary range, currency and payment frequency.
+•	Required start date, opening date and application deadline.
+•	Number of employees required.
+•	Additional conditions and eligibility requirements.
+Employer dashboard
+•	Active vacancies and recruitment status.
+•	Number of potentially matching candidates.
+•	Ranked candidate profiles with Match Scores and explanations.
+•	Candidate qualifications, experience and availability.
+•	Salary expectations and geographical distribution.
+•	Contact permissions and candidate interest status.
+•	Recruitment pipeline and analytics.
+Salary optimization
+Allow an employer to adjust the offered salary range and recalculate the potentially matching candidate pool. For example, show how the candidate pool changes when the monthly salary changes from EUR 1,000 to EUR 1,500 or EUR 2,000. Support hourly, monthly and annual compensation. The dashboard must distinguish real candidate counts from simulated demo data.
+2.3 Module C: AI Matching Engine and Central Database
+This is the central intelligence layer. It receives structured candidate profiles and vacancy requirements, normalizes data, validates mandatory criteria, calculates compatibility and returns explainable results to both portals.
+Data normalization
+•	Normalize job titles and occupation terminology.
+•	Map skills to a consistent skills catalogue and recognize equivalent terms across languages.
+•	Normalize qualifications, certifications and experience levels.
+•	Normalize locations, currencies, salary periods and availability dates.
+•	Preserve source information and mark extracted or AI-inferred fields as unverified until confirmed.
+Matching parameters
+Parameter	Comparison	Treatment
+Skills	Candidate skills against vacancy skills	Weighted compatibility
+Qualifications	Education, certificates and licenses	Mandatory or preferred
+Experience	Relevant years and type of experience	Weighted compatibility
+Location	Candidate location and work location	Distance / mobility rules
+Availability	Candidate start date and vacancy start date	Date compatibility
+Salary	Expected salary and offered range	Range compatibility
+Employment type	Candidate preference and vacancy type	Compatibility
+Other requirements	Additional role-specific conditions	Explicitly configured
+Generate an overall Match Score from 0 to 100 and show a breakdown of the factors contributing to the score. Mandatory requirements must be treated separately from preferred requirements. A candidate who does not meet an essential qualification must not receive a high score merely because other criteria are strong. The system must not present AI assumptions as verified facts.
+Two-sided matching
+•	Candidate view: “Based on your profile, we found 24 potentially suitable vacancies.”
+•	Employer view: “Based on your vacancy requirements, we found 86 potentially suitable candidates.”
+These figures are illustrative demo values, not claims about real market availability.
+Central database entities
+•	Users and authentication records.
+•	Candidate profiles and professional experience.
+•	Employer organizations and organization members.
+•	Job vacancies and vacancy requirements.
+•	Skills, qualifications, education and certifications.
+•	Candidate availability and salary preferences.
+•	Matching results and score explanations.
+•	Applications, communication records and consent records.
+•	Analytics events and recruitment history.
+3. Privacy, security and trust
+Candidate profile visibility must be configurable. The recommended default is Anonymous.
+•	Private: the profile is not discoverable by employers.
+•	Anonymous: employers can see professional qualifications, skills, experience and matching information, but not the candidate’s name or direct contact details.
+•	Public: the candidate can make selected professional information visible under their chosen permissions.
+Contact details must not be disclosed without explicit candidate consent. Implement role-based access control, secure authentication, appropriate protection of uploaded documents, and account deletion workflows. For a global product, plan for applicable data protection and employment rules in each operating jurisdiction. Do not imply that a demo implementation is legally compliant without a separate legal and security review.
+4. Analytics and market intelligence
+Candidate analytics
+•	Number of matching vacancies.
+•	Salary distribution for matching roles.
+•	Demand for the candidate’s skills.
+•	Regional employment opportunities.
+•	Profile competitiveness and improvement suggestions.
+Employer analytics
+•	Available candidate pool.
+•	Candidate distribution by region.
+•	Candidate salary expectations.
+•	Supply and demand for specific skills.
+•	Number of candidates meeting mandatory criteria.
+•	Recruitment pipeline and estimated time to fill a vacancy.
+Analytics must be calculated from platform data. Where data is simulated for the hackathon demo, label it clearly as simulated.
+5. UI / UX requirements
+•	Professional, modern SaaS interface with responsive desktop and mobile layouts.
+•	Separate navigation and dashboards for Candidate and Employer portals.
+•	Consistent design system across the platform.
+•	Clear onboarding and low-friction profile and vacancy creation.
+•	Conversational AI interfaces for guided questionnaires.
+•	Readable matching explanations and data visualizations.
+•	Landing page with two primary entry points: “Find a Job” and “Hire Talent”.
+•	Visual representation of the central AI engine connecting both sides.
+6. Recommended technical implementation
+•	Frontend: React or Next.js with TypeScript.
+•	UI: Tailwind CSS and a modern component library.
+•	Backend: Next.js API routes or a dedicated backend service.
+•	Database: PostgreSQL.
+•	ORM: Prisma or an equivalent.
+•	AI integration: configurable LLM API integration.
+•	Authentication: secure authentication with role-based access.
+•	Document processing: PDF and DOCX text extraction.
+•	Matching: deterministic, explainable rules-based scoring combined with AI-assisted semantic analysis.
+If an AI API key is unavailable, provide a simulated AI service so the full demo remains functional. Seed the database with realistic fictional candidates, employers and vacancies across several sectors. Keep AI provider integration modular so a real provider can be connected later.
+7. MVP demonstration scenarios
+Scenario A: Candidate finds a job
+1.	A user registers as a candidate.
+2.	The user enters: “I am an electrician with five years of experience.”
+3.	AI asks about qualifications, certifications, experience and location.
+4.	AI generates a structured profile.
+5.	The candidate reviews and approves the profile.
+6.	The matching engine identifies relevant vacancies.
+7.	The candidate sees ranked opportunities with Match Scores.
+8.	The candidate can express interest in a vacancy.
+Scenario B: Employer finds an employee
+9.	An employer registers an organization.
+10.	The employer enters: “We need two qualified electricians in Riga.”
+11.	AI asks about mandatory qualifications, salary, experience and availability.
+12.	AI generates a structured vacancy.
+13.	The employer publishes the vacancy.
+14.	The matching engine searches the candidate database.
+15.	The employer receives a ranked candidate list.
+16.	The employer can view anonymous profiles and request contact.
+Scenario C: Salary optimization
+17.	The employer opens a vacancy.
+18.	The employer adjusts the salary range.
+19.	The system recalculates the potentially matching candidate pool.
+20.	The dashboard visualizes how salary changes affect candidate availability.
+Scenario D: CV upload
+21.	A candidate uploads a PDF CV.
+22.	AI extracts professional information.
+23.	AI generates a structured profile and identifies missing information.
+24.	The candidate answers follow-up questions.
+25.	The candidate approves the profile and it becomes eligible for matching according to privacy settings.
+8. MVP scope and priorities
+Feature	MVP priority	Implementation note
+Candidate and employer registration	Must have	Separate roles and portals
+AI-assisted candidate profile creation	Must have	Guided questions and natural language
+CV upload and extraction	Must have	PDF / DOCX; review before saving
+AI-assisted vacancy creation	Must have	Guided questions and document upload
+Central database	Must have	Shared candidate and vacancy records
+Matching and ranking	Must have	Explainable score and mandatory criteria
+Privacy and consent controls	Must have	Anonymous default
+Candidate and employer dashboards	Must have	Working filters and results
+Salary optimization	Should have	Recalculate candidate pool
+Communication / messaging	Should have	Basic interest and contact request
+Employer reliability scoring	Future	Requires verified data and methodology
+Document verification	Future	External verification workflows
+9. Success criteria for the hackathon demo
+•	A user can complete a candidate profile using at least one AI-assisted path.
+•	An employer can create a structured vacancy using an AI-assisted path.
+•	Both records are saved in the same central database.
+•	The matching engine returns ranked results with understandable score explanations.
+•	Mandatory criteria affect eligibility or ranking as configured.
+•	Changing salary or location changes the matching results where relevant.
+•	Anonymous candidate data remains protected until consent is granted.
+•	The main scenarios can be demonstrated without external API dependencies.
+
+ PART II. MASTER PROMPT FOR CLAUDE CODE
+Copy the prompt below into Claude Code. It instructs the coding agent to build a functional interactive MVP based on the product concept above.
+1. PROJECT OVERVIEW
+Build a modern, AI-powered recruitment platform that connects people looking for jobs with employers and recruitment agencies looking for qualified workers.
+The platform must operate globally and support all professional sectors, including blue-collar professions, white-collar professions, healthcare, education, manufacturing, agriculture, hospitality, government and specialist regulated professions.
+Core concept: “Describe yourself. Describe your needs. Let AI find the right match.”
+This is not a traditional job board. AI transforms unstructured information into structured candidate profiles and job requirements, then identifies the best matches.
+2. CORE SYSTEM ARCHITECTURE
+Build three interconnected modules:
+MODULE A: JOB SEEKER PORTAL. An interface for individuals looking for employment.
+MODULE B: EMPLOYER / RECRUITER PORTAL. An interface for companies, recruitment agencies and public-sector organizations looking for employees.
+MODULE C: AI MATCHING ENGINE & CENTRAL DATABASE. A shared intelligence and data infrastructure that processes information from both portals, performs matching, generates rankings and provides analytics.
+Both portals must use the same central database and matching engine.
+3. MODULE A: JOB SEEKER PORTAL
+Implement registration and login, profile editing, account deletion workflows and privacy settings.
+Offer three profile creation methods:
+Option 1: AI Guided Profile Creation. The user enters a profession, such as “electrician”. AI asks profession-specific questions about qualification level, safety permits, experience, installation types, education and countries where the person is authorized to work.
+Option 2: CV Upload. Allow PDF and DOCX uploads. Extract experience, education, skills, languages, certificates and licenses. Generate a structured draft, identify missing or ambiguous information, ask follow-up questions and require candidate approval before saving.
+Option 3: Natural Language Input. Example: “I am a truck driver with seven years of experience. I have C and CE driving licenses. I speak English and Latvian. I am available from December and prefer Riga or within 50 km.” Convert the description into structured fields and ask relevant follow-up questions.
+Candidate profile fields: personal information, professional title, industry, occupation, skills, experience, education, qualifications, certificates, languages, location, preferred regions, employment preferences, availability date, expected salary, currency, payment period, CV and visibility settings.
+Candidate dashboard: profile completion, number of matching vacancies, recommended vacancies, Match Scores with explanations, employer information, salary, location, distance and application status. Provide filters for location, industry, salary, employment type and availability.
+4. CANDIDATE PRIVACY
+Provide three visibility settings:
+Private: profile is not discoverable by employers.
+Anonymous: employers can see professional qualifications, skills, experience and matching information, but cannot see the candidate’s name or direct contact details. This is the default setting.
+Public: the candidate can make selected professional information visible according to chosen permissions.
+Do not disclose contact details without explicit candidate consent. Implement role-based access controls and account deletion workflows.
+5. MODULE B: EMPLOYER / RECRUITER PORTAL
+Support three organization types: recruitment agencies, direct employers and government / public-sector organizations.
+Allow vacancy creation in three ways:
+Option 1: AI Guided Vacancy Creation. The employer enters a role, such as “electrician”. AI asks about mandatory qualifications, safety permits, experience, technical skills, location, salary, start date and number of employees required.
+Option 2: Job Description Upload. Allow PDF and DOCX uploads. Extract and structure the requirements.
+Option 3: Natural Language Vacancy Creation. Example: “We need three experienced electricians in Riga. Candidates must have the appropriate electrical safety qualification, at least three years of experience and be available from December. Salary is EUR 1,500 to EUR 2,000 per month.” Convert this into structured vacancy fields.
+Vacancy fields: job title, industry, occupation, required skills, mandatory qualifications, preferred qualifications, minimum experience, location, geographical search radius, employment type, salary range, currency, payment frequency, required start date, opening date, application deadline, number of employees and additional conditions.
+Employer dashboard: active vacancies, number of matching candidates, ranked candidate profiles, Match Scores, qualifications, experience, availability, salary expectations, geographical distribution, contact permissions and recruitment statistics.
+6. SALARY OPTIMIZATION
+Allow an employer to adjust the offered salary range and recalculate the potentially matching candidate pool. Example: show how the candidate pool changes when monthly salary changes from EUR 1,000 to EUR 1,500 or EUR 2,000. Support hourly, monthly and annual compensation. Clearly distinguish real candidate counts from simulated demo data.
+7. MODULE C: AI MATCHING ENGINE & CENTRAL DATABASE
+Convert information from CVs, questionnaires, vacancy descriptions and natural language inputs into standardized structured data.
+Normalize job titles, skills, professional qualifications, certifications, experience levels, languages, geographic locations, salary expectations and availability dates. Recognize equivalent professional terminology across languages and countries.
+Matching parameters:
+1. Skills compatibility.
+2. Qualification compatibility.
+3. Professional experience.
+4. Location and geographical distance.
+5. Candidate availability.
+6. Salary compatibility.
+7. Employment type compatibility.
+8. Additional requirements.
+Generate an overall Match Score from 0 to 100 and explain the score. Distinguish mandatory requirements from preferred requirements. A candidate who fails an essential mandatory qualification must not receive a high score simply because other criteria are strong. Never present AI assumptions as verified qualifications.
+Support two-sided matching. Candidates see suitable vacancies; employers see suitable candidates. Results must update when profiles or vacancies change.
+8. DATABASE ENTITIES
+Create appropriate relational data models for: Users, Candidate Profiles, Employer Organizations, Organization Members, Job Vacancies, Skills, Qualifications, Certifications, Professional Experience, Education, Candidate Availability, Salary Preferences, Matching Results, Applications, Communication and Consent, Analytics and History.
+Use unique identifiers, appropriate relationships, validation and access controls.
+9. ANALYTICS AND MARKET INTELLIGENCE
+Candidate analytics: number of matching vacancies, salary distribution, demand for skills, regional opportunities and profile competitiveness.
+Employer analytics: available candidate pool, candidate distribution by region, salary expectations, supply and demand for skills, number of candidates meeting mandatory criteria, recruitment pipeline and estimated time to fill a vacancy.
+Analytics must be based on platform data. Clearly label simulated data in the demo.
+10. USER INTERFACE AND DESIGN
+Create a professional, modern SaaS interface with responsive desktop and mobile layouts. Use separate navigation and dashboards for Candidate and Employer portals, but a consistent design system.
+The landing page must provide two primary entry points: “Find a Job” and “Hire Talent”. Visually represent the central AI matching engine connecting both sides.
+Prioritize intuitive navigation, clear data visualizations, conversational AI interfaces, simple onboarding and explainable matching results.
+11. TECHNICAL IMPLEMENTATION
+Recommended stack:
+1. Frontend: React / Next.js with TypeScript.
+2. UI: Tailwind CSS and a modern component library.
+3. Backend: Next.js API routes or a dedicated backend.
+4. Database: PostgreSQL.
+5. ORM: Prisma or equivalent.
+6. AI integration: modular LLM API integration.
+7. Authentication: secure role-based authentication.
+8. Document processing: PDF and DOCX extraction.
+9. Matching: explainable rules-based scoring combined with AI-assisted semantic analysis.
+Keep the AI provider configurable. If an API key is unavailable, implement a realistic simulated AI service so the full demo remains functional. Seed the database with realistic fictional candidates, employers and vacancies across several sectors.
+12. MVP DEMONSTRATION SCENARIOS
+Scenario A: Candidate Finds a Job
+1. A user registers as a candidate.
+2. The user enters: “I am an electrician with five years of experience.”
+3. AI asks about qualifications, certifications, experience and location.
+4. AI generates a professional profile.
+5. The candidate reviews and approves the profile.
+6. The matching engine identifies relevant vacancies.
+7. The candidate sees ranked opportunities with Match Scores.
+8. The candidate can express interest in a vacancy.
+Scenario B: Employer Finds an Employee
+1. An employer registers an organization.
+2. The employer enters: “We need two qualified electricians in Riga.”
+3. AI asks about mandatory qualifications, salary, experience and availability.
+4. AI generates a structured vacancy.
+5. The employer publishes the vacancy.
+6. The matching engine searches the candidate database.
+7. The employer receives a ranked candidate list.
+8. The employer can view anonymous profiles and request contact.
+Scenario C: Salary Optimization
+1. The employer opens a vacancy.
+2. The employer adjusts the salary range.
+3. The system recalculates the potentially matching candidate pool.
+4. The dashboard visualizes how salary changes affect candidate availability.
+Scenario D: CV Upload
+1. A candidate uploads a PDF CV.
+2. AI extracts professional information.
+3. AI generates a structured profile and identifies missing information.
+4. The candidate answers follow-up questions.
+5. The candidate approves the profile and it becomes eligible for matching according to privacy settings.
+13. DEVELOPMENT REQUIREMENTS AND DELIVERABLES
+Build a working interactive application, not a static presentation. Implement all three modules, shared database, profile creation, vacancy creation, matching, explainable scores, privacy controls, realistic demo data and functional navigation.
+Clearly distinguish real functionality from simulated AI functionality. Ensure the demo can run without external API dependencies. Structure the code so real AI APIs and production infrastructure can be integrated later.
+Deliver:
+1. Working web application.
+2. Candidate Portal.
+3. Employer / Recruiter Portal.
+4. Central database and data models.
+5. AI Matching Engine.
+6. Interactive dashboards.
+7. Registration and onboarding flows.
+8. CV upload and profile extraction demonstration.
+9. AI-guided profile and vacancy creation.
+10. Matching and ranking functionality.
+11. Privacy and consent management.
+12. Seeded demo data.
+13. README with installation and execution instructions.
+14. Technical architecture overview.
+14. FINAL PRODUCT OBJECTIVE
+The final demonstration must communicate one clear message: this platform eliminates traditional friction between job seekers and employers.
+Candidates should not need to spend hours searching through hundreds of job advertisements. Employers should not need to manually review hundreds of CVs.
+Both parties describe their capabilities and requirements. AI structures the information, understands the context and identifies relevant opportunities.
+Build the complete MVP with a strong focus on user experience, working functionality and a convincing end-to-end demonstration.
+Appendix A. Editable Mermaid flowchart
+flowchart TB
+    subgraph JS["1. JOB SEEKER PORTAL"]
+        J1["Registration / Login"]
+        J2{"Create Profile"}
+        J3["AI Guided Questionnaire"]
+        J4["Upload CV: PDF / DOCX"]
+        J5["Natural Language Input"]
+        J6["AI Profile Extraction"]
+        J7["Skills, Experience, Qualifications"]
+        J8["Availability, Salary, Location"]
+        J9["Privacy & Visibility Settings"]
+        J10["Candidate Dashboard"]
+        J1 --> J2
+        J2 --> J3
+        J2 --> J4
+        J2 --> J5
+        J3 --> J7
+        J4 --> J6
+        J5 --> J6
+        J6 --> J7
+        J7 --> J8 --> J9 --> J10
+    end
+
+    subgraph ER["2. EMPLOYER / RECRUITER PORTAL"]
+        E1["Organization Registration"]
+        E2{"Create Vacancy"}
+        E3["AI Guided Vacancy Builder"]
+        E4["Upload Job Description"]
+        E5["Natural Language Input"]
+        E6["AI Requirements Extraction"]
+        E7["Skills, Qualifications, Experience"]
+        E8["Salary, Location, Start Date, Deadline"]
+        E9["Number of Employees Required"]
+        E10["Employer Dashboard"]
+        E1 --> E2
+        E2 --> E3
+        E2 --> E4
+        E2 --> E5
+        E3 --> E7
+        E4 --> E6
+        E5 --> E6
+        E6 --> E7
+        E7 --> E8 --> E9 --> E10
+    end
+
+    subgraph CORE["3. AI MATCHING ENGINE & CENTRAL DATABASE"]
+        D1[("Central Database")]
+        D2["Candidate Profiles"]
+        D3["Vacancy Requirements"]
+        D4["Structured Data Normalization"]
+        D5["Mandatory Criteria Validation"]
+        D6["AI Compatibility Analysis"]
+        D7["Match Score & Ranking"]
+        D8["Salary & Geographic Analysis"]
+        D9["Recommendations & Analytics"]
+        D1 --- D2
+        D1 --- D3
+        D2 --> D4
+        D3 --> D4
+        D4 --> D5 --> D6 --> D7 --> D8 --> D9
+    end
+
+    J10 -->|"Candidate data"| D1
+    E10 -->|"Vacancy data"| D1
+    D9 -->|"Matched vacancies"| J10
+    D9 -->|"Ranked candidates"| E10
+    J9 -.->|"Access permissions"| D1
+Appendix B. Assumptions and items requiring later validation
+•	The global scope is a product ambition. Country-specific employment law, data protection, salary conventions and qualification recognition require jurisdiction-specific implementation.
+•	The initial matching score is a product design concept. Weightings and eligibility rules must be tested with real recruiters and candidates.
+•	Employer reliability scores should not be launched until there is a transparent, verifiable methodology and appropriate safeguards against manipulation.
+•	Candidate verification and security-clearance checks require lawful data sources, consent and country-specific procedures.
+•	Any market size, candidate count, salary benchmark or recruitment-time estimate shown in a demo must be labelled as simulated unless supported by actual data.
