@@ -17,3 +17,6 @@ tsconfig.tsbuildinfo
 .DS_Store
 Thumbs.db
 
+
+# Old pages, kept locally only
+legacy/
