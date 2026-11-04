@@ -17,3 +17,7 @@ tsconfig.tsbuildinfo
 .DS_Store
 Thumbs.db
 
+
+# Local-only (not part of the TALIO project)
+legacy/
+Context for project/
